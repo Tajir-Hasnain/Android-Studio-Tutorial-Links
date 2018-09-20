@@ -1,0 +1,7 @@
+https://developers.google.com/identity/sign-in/android/sign-in
+
+
+Following step by step of this tutorial procedures is enough.
+
+Note:
+* Google Play Services version should be as latest as possible.Otherwise the APIException cannot be resolved.
