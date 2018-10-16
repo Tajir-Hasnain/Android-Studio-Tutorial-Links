@@ -155,4 +155,12 @@ public void requestLocation(View view) {
                 }).check();
     }
 
-//Stop Location update can be directly called from where we want to access it
+//Stop Location update can be directly called from where we want to access it]
+
+//Sample : 
+
+public void cancelLocation(View view) {
+        Log.d("Status","Request Cancelled.");
+        mRequestingLocationUpdates = false;
+        stopLocationUpdates();
+    }
