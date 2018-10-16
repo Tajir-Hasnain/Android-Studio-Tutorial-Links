@@ -120,3 +120,39 @@ private void requestLocationUpdates() {
                     }
                 });
     }
+
+
+
+
+
+
+//Function to call requestLocationUpdate should be like the following 
+
+public void requestLocation(View view) {
+        requesting = true;
+        Log.d("Status","Request Submitted");
+        // Requesting ACCESS_FINE_LOCATION using Dexter library
+        Dexter.withActivity(this)
+                .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        mRequestingLocationUpdates = true;
+                        requestLocationUpdates();
+                    }
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        if (response.isPermanentlyDenied()) {
+                            // open device settings when the permission is
+                            // denied permanently
+                            openSettings();
+                        }
+                    }
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).check();
+    }
+
+//Stop Location update can be directly called from where we want to access it
