@@ -1,6 +1,12 @@
+
+//You need to add 
+// implementation 'com.android.volley:volley:1.1.1'
+//in your app level build.gradle file
+
 public void getReqCount() {
 
         //JSON
+        RequestQueue queue = Volley.newRequestQueue(this);
         Log.d("Status","Getting JSON Object from server");
         String url = "foobar.com/getReq";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -20,6 +26,5 @@ public void getReqCount() {
                 Log.v("Status","Json request failed");
             }
         });
-        Log.d("Request Count", reqCount);
-        
+        queue.add(jsonObjectRequest);
     }
